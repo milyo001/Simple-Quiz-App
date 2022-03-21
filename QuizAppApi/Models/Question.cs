@@ -28,6 +28,5 @@ namespace QuizApi.Models
 
         [Column(TypeName = "nvarchar(50)")]
         public string Option4 { get; set; }
-
     }
 }
