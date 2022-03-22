@@ -18,5 +18,7 @@ namespace QuizApi.Models
         public int Score { get; set; }
 
         public int CompletionTime { get; set; }
+
+        public int MyProperty { get; set; }
     }
 }
