@@ -79,6 +79,7 @@ namespace QuizApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Participant>> PostParticipant(Participant participant)
         {
+            var temp =  
             _context.Participants.Add(participant);
             await _context.SaveChangesAsync();
 
