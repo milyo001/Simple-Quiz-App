@@ -79,11 +79,19 @@ namespace QuizApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Participant>> PostParticipant(Participant participant)
         {
-            var temp =  
-            _context.Participants.Add(participant);
-            await _context.SaveChangesAsync();
+            var temp = await _context.Participants
+                .Where(p => p.Name == participant.Name && p.Email == participant.Email)
+                .FirstOrDefaultAsync();
 
-            return CreatedAtAction("GetParticipant", new { id = participant.Id }, participant);
+            if (temp == null)
+            {
+                _context.Participants.Add(temp);
+                await _context.SaveChangesAsync();
+            }
+            else
+                participant = temp;
+
+            return Ok(participant);
         }
 
         // DELETE: api/Participants/5
