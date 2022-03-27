@@ -1,11 +1,9 @@
 ﻿
 namespace QuizApi.Controllers
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using QuizApi.Models;
@@ -13,11 +11,11 @@ namespace QuizApi.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class QuestionsController : ControllerBase
+    public class QuestionController : ControllerBase
     {
         private readonly QuizDbContext _context;
 
-        public QuestionsController(QuizDbContext context)
+        public QuestionController(QuizDbContext context)
         {
             _context = context;
         }

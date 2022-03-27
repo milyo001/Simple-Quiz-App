@@ -1,11 +1,9 @@
 ﻿
 namespace QuizApi.Controllers
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using QuizApi.Models;
@@ -13,11 +11,11 @@ namespace QuizApi.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class ParticipantsController : ControllerBase
+    public class ParticipantController : ControllerBase
     {
         private readonly QuizDbContext _context;
 
-        public ParticipantsController(QuizDbContext context)
+        public ParticipantController(QuizDbContext context)
         {
             _context = context;
         }
@@ -74,18 +72,18 @@ namespace QuizApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Participants
+        // POST: api/Participant
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Participant>> PostParticipant(Participant participant)
         {
-            var temp = await _context.Participants
+            var temp = _context.Participants
                 .Where(p => p.Name == participant.Name && p.Email == participant.Email)
-                .FirstOrDefaultAsync();
+                .FirstOrDefault();
 
             if (temp == null)
             {
-                _context.Participants.Add(temp);
+                _context.Participants.Add(participant);
                 await _context.SaveChangesAsync();
             }
             else

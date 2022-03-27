@@ -20,6 +20,12 @@ builder.Services.AddScoped<IQuestionService, QuestionService>();
 
 var app = builder.Build();
 
+// Allow cors for the React client side, make sure to remove the slash in the end
+app.UseCors(options => options
+    .WithOrigins("http://localhost:3000")
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
