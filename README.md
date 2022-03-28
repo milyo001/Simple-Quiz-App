@@ -1,6 +1,6 @@
-A basic quiz application made with ReatJS and .NET 6 Web API
+A basic quiz application made with ReactJS and .NET 6 Web API
 
-Questions query:
+Questions query(TODO: Implement seeding method):
 ```
 USE QuizDb
 GO
