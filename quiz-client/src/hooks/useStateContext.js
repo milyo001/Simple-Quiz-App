@@ -2,12 +2,16 @@ import React, { createContext, useState, useContext } from 'react'
 
 export const stateContext = createContext();
 
+// Keeping the information in local browser storage to prevent loss of data when page 
+// is reloaded
 const getFreshContext =()=>{
-    return{
+    if(localStorage.getItem('context')===null)
+    localStorage.setItem('context', JSON.stringify({
         participantId:0,
         timeTaken:0,
         selectedOptions:[]
-    }
+    }))
+    return JSON.parse(localStorage.getItem('context'))
 }
 
 export default function useStateContext() {
