@@ -29,6 +29,8 @@ export default function useStateContext() {
 export function ContextProvider({ children }) {
     const [context, setContext] = useState(getFreshContext);
 
+    // This function will be invoked whenever there is change in the second
+    // parameter or the actual context
     useEffect(() => {
         localStorage.setItem('context', JSON.stringify(context))
     }, [context])
