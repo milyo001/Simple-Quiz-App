@@ -7,7 +7,7 @@ namespace QuizApi.Models
     public class Participant
     {
         [Key]
-        public int Id { get; set; }
+        public int ParticipantId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
         public string Email { get; set; }

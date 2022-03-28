@@ -46,7 +46,7 @@ namespace QuizApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutParticipant(int id, Participant participant)
         {
-            if (id != participant.Id)
+            if (id != participant.ParticipantId)
             {
                 return BadRequest();
             }
@@ -110,7 +110,7 @@ namespace QuizApi.Controllers
 
         private bool ParticipantExists(int id)
         {
-            return _context.Participants.Any(e => e.Id == id);
+            return _context.Participants.Any(e => e.ParticipantId == id);
         }
     }
 }
