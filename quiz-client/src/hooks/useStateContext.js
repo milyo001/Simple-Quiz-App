@@ -1,17 +1,21 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState, useContext, useEffect } from 'react'
 
 export const stateContext = createContext();
 
 // Keeping the information in local browser storage to prevent loss of data when page 
 // is reloaded
-const getFreshContext =()=>{
-    if(localStorage.getItem('context')===null)
-    localStorage.setItem('context', JSON.stringify({
-        participantId:0,
-        timeTaken:0,
-        selectedOptions:[]
-    }))
-    return JSON.parse(localStorage.getItem('context'))
+const getFreshContext = () => {
+    try {
+        if (localStorage.getItem('context') === null)
+            localStorage.setItem('context', JSON.stringify({
+                participantId: 0,
+                timeTaken: 0,
+                selectedOptions: []
+            }))
+        return JSON.parse(localStorage.getItem('context'));
+    } catch (err) {
+        console.log('Error: ', err.message);
+    }
 }
 
 export default function useStateContext() {
@@ -24,6 +28,11 @@ export default function useStateContext() {
 
 export function ContextProvider({ children }) {
     const [context, setContext] = useState(getFreshContext);
+
+    useEffect(() => {
+        localStorage.setItem('context', JSON.stringify(context))
+    }, [context])
+
     return (
         <stateContext.Provider value={{ context, setContext }}>
             {children}
