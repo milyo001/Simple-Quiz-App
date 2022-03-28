@@ -1,6 +1,6 @@
 import './App.css';
 import Login from './components/Login';
-import Question from './components/Question';
+import Question from './components/Quiz';
 
 function App() {
   return (
