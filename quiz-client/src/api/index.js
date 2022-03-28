@@ -2,8 +2,10 @@ import axios from "axios";
 
 export const BASE_URL = 'http://localhost:5099/';
 
+// Endpoint and their value as name used to fetch data, example mysite.com/participant
 export const ENDPOINTS = {
-    partisipant: 'participant'
+    partisipant: 'participant',
+    question: 'question'
 }
 
 export const createAPIEndpoint = endpoint =>
