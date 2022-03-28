@@ -33,7 +33,7 @@ export default function Login() {
             createAPIEndpoint(ENDPOINTS.partisipant)
                 .post(values)
                 .then(res => {
-                    setContext({ participantId: res.data.id })
+                    setContext({ participantId: res.data.participantId })
                     navigate('/quiz');
                 })
                 .catch(err => console.log(err))
