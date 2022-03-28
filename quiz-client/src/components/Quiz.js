@@ -19,8 +19,10 @@ export default function Quiz() {
 
   return (
     qns.length != 0
-      ? <Card>
+      ? <Card 
+        sx={{maxWidth: 640, mx:'auto', mt:5}}>
           <CardContent>
+            <CardHeader title={'Question ' + (qnIndex + 1) + ' of ' + qns.length}></CardHeader>
             <Typography variant="h6">
               {qns[qnIndex].qnInWords}
             </Typography>
