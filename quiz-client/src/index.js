@@ -18,7 +18,7 @@ ReactDOM.render(
     <ContextProvider>
     <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-    <App />
+        <App />
     </ThemeProvider>
     </ContextProvider>
   </React.StrictMode>,
