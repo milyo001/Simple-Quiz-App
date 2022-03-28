@@ -21,7 +21,7 @@ export default function useStateContext() {
 export function ContextProvider({ children }) {
     const [context, setContext] = useState(getFreshContext);
     return (
-        <stateContext.Provider value={(context, setContext)}>
+        <stateContext.Provider value={{ context, setContext }}>
             {children}
         </stateContext.Provider>
     )

@@ -4,6 +4,7 @@ import { Box } from '@mui/system'
 import Center from './Center'
 import useForm from '../hooks/useForm'
 import { createAPIEndpoint, ENDPOINTS, endpoints } from '../api'
+import useStateContext from '../hooks/useStateContext'
 
 const getFreshModel = () => ({
     name: '',
@@ -11,6 +12,9 @@ const getFreshModel = () => ({
 })
 
 export default function Login() {
+
+    const { context, setContext } = useStateContext();
+
     const {
         values,
         setValues,
@@ -22,19 +26,24 @@ export default function Login() {
     const login = e => {
         //To prenent the form from reloding
         e.preventDefault();
-        if(validate())
+        if(validate()) {
+
             createAPIEndpoint(ENDPOINTS.partisipant)
                 .post(values)
-                .then(res => console.log(res))
+                .then(res => {
+                    setContext({ participantId: res.data.participantId })
+                })
                 .catch(err => console.log(err))
+        }
+
     }
     const validate = () => {
         let temp = {};
         temp.email = (/\S+@\S+\.\S+/).test(values.email) ? "" : "Email is not valid!";
-        temp.name = values.name != "" ? "" : "The name field is required!";
+        temp.name = values.name !== "" ? "" : "The name field is required!";
         setErrors(temp);
         // Check if all variables in temp object are equal to ""
-        return Object.values(temp).every(x => x == "")
+        return Object.values(temp).every(x => x === "")
     }
 
     return (
