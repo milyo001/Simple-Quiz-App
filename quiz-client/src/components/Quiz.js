@@ -13,7 +13,6 @@ export default function Quiz() {
       .fetch()
       .then(res => {
           setQns(res.data);
-          console.log(res.data);
       })
       .catch(err => {console.log("Error: " + err);})
   }, [])
@@ -29,7 +28,9 @@ export default function Quiz() {
                 {qns[qnIndex].options.map((item, index) => 
                   <ListItemButton key={index} disableRipple>
                     <div>
-                      {item}
+                      {/* Get the ASCII code of letter A and increment it by the index of 
+                        questions array,fetched from server */}
+                      <b>{String.fromCharCode(65 + index)+ ". "} </b> {item}
                     </div>
                   </ListItemButton>
                 )}
