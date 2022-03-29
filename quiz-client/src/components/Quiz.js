@@ -7,14 +7,29 @@ export default function Quiz() {
   
   const [ qns, setQns ] = useState([]);
   const [qnIndex, setQnIndex] = useState(0);
+  const [timeTaken, setTimeTaken] = useState(0);
+  // For reference only
+  let timer;
+
+  // Every 1000ms the callback function will be invoked
+  const startTimer = () => {
+    setInterval(()=> {
+      // It is easier to pass timeTaken + 1, but setTimeTaken function is async,
+      // meaning the previuos operation might be not completed
+      timer = setTimeTaken(prev => prev + 1 ); // prev is for previous value
+    }, [1000])
+  }
 
   useEffect(() => {
     createAPIEndpoint(ENDPOINTS.question)
       .fetch()
       .then(res => {
           setQns(res.data);
+          startTimer()
       })
       .catch(err => {console.log("Error: " + err);})
+      // Stop the timer 
+      return () => { clearInterval(timer)}
   }, [])
 
   return (
