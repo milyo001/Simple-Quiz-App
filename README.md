@@ -1,6 +1,6 @@
-A basic quiz application made with ReatJS and .NET 6 Web API
+A basic quiz application made with ReactJS and .NET 6 Web API
 
-Questions query:
+Questions query(TODO: Implement seeding method):
 ```
 USE QuizDb
 GO
@@ -13,7 +13,7 @@ INSERT [DBO].[Questions] (Id, InWords, ImageName, Option1, Option2, Option3, Opt
 INSERT [DBO].[Questions] (Id, InWords, ImageName, Option1, Option2, Option3, Option4, Answer) Values (5, N'What is Reflection in C#?', NULL, 'When object is assigned to other object', 'Datatypes metadata extractor during runtime', 'Markup language', 'NuGet Package', 1)
 INSERT [DBO].[Questions] (Id, InWords, ImageName, Option1, Option2, Option3, Option4, Answer) Values (6, N'A C# class is...', NULL, 'type-safe function pointer used by the CLI', 'blueprint/template from which objects are created', 'a collection', 'always empty', 1)
 INSERT [DBO].[Questions] (Id, InWords, ImageName, Option1, Option2, Option3, Option4, Answer) Values (7, N'What is SPA in web development?', NULL, 'Single pending attribute', 'Singleton pattern axios', 'Single page application', 'Markup language', 2)
-INSERT [DBO].[Questions] (Id, InWords, ImageName, Option1, Option2, Option3, Option4, Answer) Values (8, N'[What ? stands for in the following example: var a = new A(); if(a?.PropertyOfA != foo)]', NULL, 'It does nothing', '[Validate the object if it''s not null]', '[throw NullReferenceExeption if null]', 'It''s the null conditional operator.', 3)
+INSERT [DBO].[Questions] (Id, InWords, ImageName, Option1, Option2, Option3, Option4, Answer) Values (8, N'What ? stands for in the following example: var a = new A(); if(a?.PropertyOfA != foo)', NULL, 'It does nothing', 'Validate the object if it''s not null', 'throw NullReferenceExeption if null', 'It''s the null conditional operator.', 3)
 INSERT [DBO].[Questions] (Id, InWords, ImageName, Option1, Option2, Option3, Option4, Answer) Values (9, N'Where are stored procedures stored?', NULL, 'In some of the ORMs data dictionary', 'In the database data dictionary.', 'In the C# stack', 'In the C# heap', 1)
 INSERT [DBO].[Questions] (Id, InWords, ImageName, Option1, Option2, Option3, Option4, Answer) Values (10, N'How many are the types of SQL JOINs', NULL, '(1)Just one JOIN', '(2)INNER and OUTER JOIN ', '(3)LEFT/RIGHT/FULL Join', '(4)INNER, LEFT/RIGHT/FULL OUTER JOIN', 3)
 SET IDENTITY_INSERT [Questions] OFF;
