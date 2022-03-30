@@ -37,7 +37,9 @@ export default function Quiz() {
       ? <Card 
         sx={{maxWidth: 640, mx:'auto', mt:5}}>
           <CardContent>
-            <CardHeader title={'Question ' + (qnIndex + 1) + ' of ' + qns.length}></CardHeader>
+            <CardHeader 
+              title={'Question ' + (qnIndex + 1) + ' of ' + qns.length}
+              action={<Typography>{timeTaken}</Typography>}></CardHeader>
             <Typography variant="h6">
               {qns[qnIndex].qnInWords}
             </Typography>
